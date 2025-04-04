@@ -4,7 +4,8 @@ import Papa from "papaparse";
 export const SourceContext = createContext(null);
 
 export const SourceProvider = ({ children }) => {
-  const [source, setSource] = useState(Papa.parse(localStorage.getItem("source")) || []);
+  const defaultSource = localStorage.getItem("source") || "";
+  const [source, setSource] = useState(Papa.parse(defaultSource));
 
   const handleSourceChange = (newSource) => {
     localStorage.setItem("source", newSource);
